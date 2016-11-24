@@ -85,11 +85,28 @@ schedule(t::Task) = enq_work(t)
     schedule(t::Task, [val]; error=false)
 
 Add a task to the scheduler's queue. This causes the task to run constantly when the system
-is otherwise idle, unless the task performs a blocking operation such as `wait`.
+is otherwise idle, unless the task performs a blocking operation such as [`wait`](:func:`wait`).
 
 If a second argument `val` is provided, it will be passed to the task (via the return value of
-`yieldto`) when it runs again. If `error` is `true`, the value is raised as an exception in
+[`yieldto`](:func:`yieldto`) when it runs again. If `error` is `true`, the value is raised as an exception in
 the woken task.
+
+```jldoctest
+julia> a5() = det(rand(1000, 1000));
+
+julia> b = Task(a5);
+
+julia> istaskstarted(b)
+false
+
+julia> schedule(b);
+
+julia> istaskstarted(b)
+true
+
+julia> istaskdone(b)
+true
+```
 """
 function schedule(t::Task, arg; error=false)
     # schedule a task to be (re)started with the given value or exception
