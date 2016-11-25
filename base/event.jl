@@ -88,7 +88,7 @@ Add a task to the scheduler's queue. This causes the task to run constantly when
 is otherwise idle, unless the task performs a blocking operation such as [`wait`](:func:`wait`).
 
 If a second argument `val` is provided, it will be passed to the task (via the return value of
-[`yieldto`](:func:`yieldto`) when it runs again. If `error` is `true`, the value is raised as an exception in
+[`yieldto`](:func:`yieldto`)) when it runs again. If `error` is `true`, the value is raised as an exception in
 the woken task.
 
 ```jldoctest
