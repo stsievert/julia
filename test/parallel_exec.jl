@@ -808,7 +808,7 @@ wp = WorkerPool(workers())
 
 
 # CachingPool tests
-wp = CachingPool(workers())
+wp = CachingPool(WorkerPool(workers()))
 @test [1:100...] == pmap(wp, x->x, 1:100)
 
 clear!(wp)
