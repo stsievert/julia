@@ -50,6 +50,8 @@ Tasks
 
        julia> schedule(b);
 
+       julia> yield();
+
        julia> istaskdone(b)
        true
 
@@ -163,6 +165,8 @@ Tasks
        false
 
        julia> schedule(b);
+
+       julia> yield();
 
        julia> istaskdone(b)
        true
