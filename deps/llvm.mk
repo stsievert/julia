@@ -100,7 +100,7 @@ endif # LLVM_ASSERTIONS
 ifeq ($(LLVM_DEBUG), 1)
 LLVM_FLAGS += --disable-optimized --enable-debug-symbols --enable-keep-symbols
 ifeq ($(OS), WINNT)
-LLVM_CPPFLAGS += -Wa,-mbig-obj
+LLVM_CXXFLAGS += -Wa,-mbig-obj
 endif # OS == WINNT
 else
 LLVM_FLAGS += --enable-optimized
